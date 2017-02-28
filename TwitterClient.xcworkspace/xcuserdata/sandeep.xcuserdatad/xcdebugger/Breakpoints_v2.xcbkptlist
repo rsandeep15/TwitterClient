@@ -9,14 +9,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TwitterClient/LoginViewController.swift"
-            timestampString = "509498606.046594"
+            filePath = "TwitterClient/User.swift"
+            timestampString = "509957288.47293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "onLogin(_:)"
-            landmarkType = "7">
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "User"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,93 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TwitterClient/LoginViewController.swift"
-            timestampString = "509498610.126442"
+            filePath = "TwitterClient/TwitterClient.swift"
+            timestampString = "509957288.47293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "onLogin(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TwitterClient/LoginViewController.swift"
-            timestampString = "509498736.923786"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "onLogin(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TwitterClient.LoginViewController.onLogin (Any) -&gt; ()"
-                  moduleName = "TwitterClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sandeep/iOSProjects/TwitterClient/TwitterClient/LoginViewController.swift"
-                  timestampString = "509498736.930856"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "471">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TwitterClient.LoginViewController.(onLogin (Any) -&gt; ()).(closure #1)"
-                  moduleName = "TwitterClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sandeep/iOSProjects/TwitterClient/TwitterClient/LoginViewController.swift"
-                  timestampString = "509498736.934056"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TwitterClient/AppDelegate.swift"
-            timestampString = "509894588.193832"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "application(_:open:options:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TwitterClient/AppDelegate.swift"
-            timestampString = "509930010.10837"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "application(_:open:options:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "currentAccount(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

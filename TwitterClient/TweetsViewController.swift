@@ -1,15 +1,15 @@
 //
-//  LoginViewController.swift
+//  TweetsViewController.swift
 //  TwitterClient
 //
-//  Created by Sandeep Raghunandhan on 2/22/17.
+//  Created by Sandeep Raghunandhan on 2/27/17.
 //  Copyright © 2017 Sandeep Raghunandhan. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
-class LoginViewController: UIViewController {
 
+class TweetsViewController: UIViewController {
+    var tweets: [Tweet]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,18 +19,24 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+        TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            
+            for tweet in tweets {
+                print(tweet.text as String!)
+            }
+            
+        }, failure: { (error: Error) in
+            print(error.localizedDescription)
+        })
     }
     
-    @IBAction func onLogin(_ sender: Any) {
-        let client  = TwitterClient.sharedInstance
-        client?.login( success: {()->() in
-            print("I've logged in!")
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
-        }, failure: { (error: Error!) -> ()in
-            print("Error:\(error.localizedDescription)")
-        })
+    @IBAction func onLogoutButton(_ sender: Any) {
+        User.currentUser = nil
+        TwitterClient.sharedInstance?.logout()
         
-
+        
     }
 
     /*
