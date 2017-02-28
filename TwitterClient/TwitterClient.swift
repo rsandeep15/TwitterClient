@@ -36,7 +36,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
-        get("/1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+        get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             print("account: \(response)")
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
@@ -48,6 +48,32 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         })
     }
+    
+    func favorite(id: String, success: @escaping (String) -> (), failure: @escaping (Error) -> ()){
+        post("1.1/favorites/create.json?id=\(id)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let dictionary = response as? NSDictionary
+            let count = "\(dictionary!["favorite_count"] ?? 0)"
+            success(count)
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+            failure(error)
+        }
+    }
+    
+    func retweet(id: String, success: @escaping (String) -> (), failure: @escaping (Error) -> ()){
+        post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            
+            let dictionary = response as? NSDictionary
+            
+            let count = "\(dictionary!["retweet_count"]!)"
+            
+            success(count)
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+            failure(error)
+        }
+    }
+    
     
     func login(success: @escaping ()->(), failure: @escaping (Error) -> ()) {
         loginSuccess = success

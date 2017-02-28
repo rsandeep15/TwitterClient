@@ -8,28 +8,35 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
-    var tweets: [Tweet]!
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var tweets: [Tweet]?
+    
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Table View Setup
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 125
+        
         // Do any additional setup after loading the view.
+        TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            
+            self.tableView.reloadData()
+            
+        }, failure: { (error: Error) in
+            print(error.localizedDescription)
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
-        TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            
-            for tweet in tweets {
-                print(tweet.text as String!)
-            }
-            
-        }, failure: { (error: Error) in
-            print(error.localizedDescription)
-        })
+
     }
     
     @IBAction func onLogoutButton(_ sender: Any) {
@@ -38,15 +45,20 @@ class TweetsViewController: UIViewController {
         
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tweets = tweets {
+            return tweets.count
+        }
+        else {
+            return 0
+        }
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
+        cell.tweet = tweets![indexPath.row]
+        cell.selectionStyle = .none
+        return cell 
+    }
 
 }
